@@ -4,10 +4,11 @@ language: zh-CN
 
 # main menu navigation
 menu:
-  #Home: /
-  #About: /about
-  #Contact: /contact
-  #Archives: /archives
+  代码砖: /tags/Codes
+  机器人: /tags/Robot-Models
+  航模: /tags/Airplane-Models
+  铁模: /tags/Railway-Models
+  纸模: /tags/Paper-Models
 
 # Highlight.js
 # Theme: https://highlightjs.org/static/demo/
