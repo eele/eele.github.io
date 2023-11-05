@@ -23,7 +23,7 @@ prettify:
 
 footer:
   owner:
-    enable: true
+    enable: false
     since: 2020
   custom_text: 
   ICP: # Chinese ICP License
@@ -33,7 +33,7 @@ footer:
 
 favicon: /img/favicon.ico
 
-canonical: false
+canonical: true
 
 auto_excerpt:
   enable: true
@@ -43,7 +43,7 @@ busuanzi:
   enable: true
 
 post_copyright:
-  enable: true
+  enable: false
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
@@ -68,7 +68,7 @@ lazyload:
 viewerjs: true
 
 # Fancybox support
-fancybox: false
+fancybox: true
 
 # Analysis
 
