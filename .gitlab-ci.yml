@@ -61,14 +61,14 @@ stages:
               failureThreshold: 5
               initialDelaySeconds: 60
               httpGet:
-                path: /actuator
+                path: /
                 port: $container_port
             readinessProbe:
               periodSeconds: 20
               timeoutSeconds: 2
               failureThreshold: 3
               httpGet:
-                path: /actuator
+                path: /
                 port: $container_port
         terminationGracePeriodSeconds: 30
     strategy :
