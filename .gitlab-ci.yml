@@ -1,4 +1,4 @@
-image: docker.io/library/node:121.1.0-bullseye-slim
+image: docker.io/library/node:21.1.0-bullseye-slim
 cache:
   paths:
     - node_modules/
