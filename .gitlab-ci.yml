@@ -109,8 +109,8 @@ stages:
   limit_mem: "128Mi"
 
 
-build-hexo:
-  stage: build-hexo
+build-front-end:
+  stage: build-front-end
   variables:
     << : *vars
   image: docker.io/library/node:21.1.0-bullseye-slim
