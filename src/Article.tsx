@@ -1,7 +1,7 @@
 import "vditor/dist/index.css";
 import "./Article.css"
 import React, { Component } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import ArticleEdit from "./ArticleEdit";
 import ArticleView from "./ArticleView";
 
