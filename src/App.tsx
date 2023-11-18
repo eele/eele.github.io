@@ -1,27 +1,24 @@
-import React from 'react';
-import {Accordion, AccordionItem, Link} from "@nextui-org/react";
+import {Card} from "@nextui-org/react";
+import {Listbox, ListboxItem} from "@nextui-org/react";
 
 function App() {
   return (
-    <Accordion>
-      <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
-        <li>
-          <Link href="#">Default Link</Link>
-        </li>
-        <li>
-          <Link href="#">Default Link</Link>
-        </li>
-        <li>
-          <Link href="#">Default Link</Link>
-        </li>
-      </AccordionItem>
-      <AccordionItem key="2" aria-label="Accordion 2" title="Accordion 2">
-        <Link href="#">Default Link</Link>
-      </AccordionItem>
-      <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-        <Link href="#">Default Link</Link>
-      </AccordionItem>
-    </Accordion>
+    <Card className="max-w-[400px]">
+      <Listbox
+        aria-label="Actions"
+        onAction={(key) => alert(key)}
+        itemClasses={{
+          base: "data-[hover=true]:bg-primary-50",
+        }}
+      >
+        <ListboxItem key="new" variant="shadow">New file</ListboxItem>
+        <ListboxItem key="copy" variant="shadow">Copy link</ListboxItem>
+        <ListboxItem key="edit" variant="shadow">Edit file</ListboxItem>
+        <ListboxItem key="delete" variant="shadow">
+          Delete file
+        </ListboxItem>
+      </Listbox>
+    </Card>
   );
 }
 
