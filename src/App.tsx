@@ -1,25 +1,41 @@
-import {Card} from "@nextui-org/react";
-import {Listbox, ListboxItem} from "@nextui-org/react";
+import './App.css';
+import {Component} from 'react'
+import {Link} from 'react-router-dom'
 
-function App() {
-  return (
-    <Card className="max-w-[400px]">
-      <Listbox
-        aria-label="Actions"
-        onAction={(key) => alert(key)}
-        itemClasses={{
-          base: "data-[hover=true]:bg-primary-50",
-        }}
-      >
-        <ListboxItem key="new" variant="shadow">New file</ListboxItem>
-        <ListboxItem key="copy" variant="shadow">Copy link</ListboxItem>
-        <ListboxItem key="edit" variant="shadow">Edit file</ListboxItem>
-        <ListboxItem key="delete" variant="shadow">
-          Delete file
-        </ListboxItem>
-      </Listbox>
-    </Card>
-  );
+class App extends Component<{}, {articles: Array<{title: String, id: String}>}> {
+
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = {articles: []};
+  }
+
+  componentDidMount() {
+    fetch("/articles.json")
+    .then(res=>res.json()) 
+    .then(data => {
+      console.log(data)
+      this.setState({articles: data})
+    })
+    .catch(err => console.log(err))
+  }
+ 
+  render() {
+    return (
+      <div>
+        <h1>Byte Art</h1>
+        <h6 className='sub-title'>One byte, one world.</h6>
+        <br/>
+        <ul>
+          {this.state.articles &&
+            this.state.articles.map((item, index) => (
+              <li key={index.toString()}>
+                <Link to={{ pathname: `/articles/${item.id}` }}>{item.title}</Link>
+              </li>
+            ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
