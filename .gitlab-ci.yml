@@ -117,16 +117,14 @@ build-front-end:
   cache:
     paths:
       - node_modules/
-  before_script:
-    - yarn install
-    - yarn build
   artifacts:
      paths:
        - $build_target_path
      expire_in: 1 hour
   script: |
     cd ${CI_PROJECT_DIR}
-    hexo generate
+    yarn install
+    yarn build
   only :
     - main
 
