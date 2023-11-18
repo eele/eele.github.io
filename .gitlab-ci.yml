@@ -113,7 +113,7 @@ build-front-end:
   stage: build-front-end
   variables:
     << : *vars
-  image: docker.io/paketobuildpacks/yarn:1.2
+  image: paketobuildpacks/yarn:1.2
   cache:
     paths:
       - node_modules/
