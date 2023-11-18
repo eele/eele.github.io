@@ -113,7 +113,7 @@ build-front-end:
   stage: build-front-end
   variables:
     << : *vars
-  image: paketobuildpacks/yarn:1.2
+  image: jitesoft/node-yarn:21-slim
   cache:
     paths:
       - node_modules/
