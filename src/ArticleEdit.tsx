@@ -14,17 +14,21 @@ class ArticleEdit extends Component<{}, {}> {
     const vditor = new Vditor("vditor", {
       after: () => {
         vditor.setValue(text);
+      },
+      cache: {
+        enable: false,
+      },
+      value: 'ir',
+      minHeight: 600,
+      preview: {
+        maxWidth: 1000
       }
     });
   }
 
-  editArticle() {
-
-  }
-
   render(): React.ReactNode {
     return (
-      <div className="content">
+      <div>
         <br/>
         <button>Save</button>
         <div id="vditor" className="vditor" />

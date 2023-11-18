@@ -17,10 +17,6 @@ class Article extends Component<{}, {}> {
   componentDidMount() {
   }
 
-  editArticle() {
-
-  }
-
   render(): React.ReactNode {
     return (
       <div>
