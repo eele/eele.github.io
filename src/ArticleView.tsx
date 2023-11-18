@@ -12,8 +12,13 @@ class ArticleView extends Component<{}, {}> {
   }
   
   componentDidMount() {
-    let text = '# aa\nqwe`qwe`';
-    Vditor.preview(this.viewDOM, text);
+    let articleId = window.location.pathname.split("/")[2];
+    fetch("http://article.byte.art:8080/api/articles/" + articleId)
+    .then(res=>res.text()) 
+    .then(data => {
+      Vditor.preview(this.viewDOM, data);
+    })
+    .catch(err => console.log(err))
   }
 
   render(): React.ReactNode {
