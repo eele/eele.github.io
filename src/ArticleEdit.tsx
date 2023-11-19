@@ -62,7 +62,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
       cache: {
         enable: false,
       },
-      value: 'ir',
+      value: 'Waiting ...',
       minHeight: 600,
       preview: {
         maxWidth: 1000
