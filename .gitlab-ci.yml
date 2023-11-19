@@ -70,6 +70,14 @@ stages:
               httpGet:
                 path: /
                 port: $container_port
+            volumeMounts:
+              - name: one-byte-art-nginx
+                mountPath: /etc/nginx/conf.d/default.conf
+                subPath: default.conf
+        volumes:
+          - name: one-byte-art-nginx
+            configMap: 
+              name: one-byte-art-nginx
         terminationGracePeriodSeconds: 30
     strategy :
       type : RollingUpdate
