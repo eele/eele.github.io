@@ -13,7 +13,7 @@ class ArticleView extends Component<{}, {}> {
   
   componentDidMount() {
     let articleId = window.location.pathname.split("/")[2];
-    fetch("http://article.byte.art:8080/api/articles/" + articleId)
+    fetch("https://one.byte.art/api/articles/" + articleId)
     .then(res=>res.text()) 
     .then(data => {
       Vditor.preview(this.viewDOM, data);

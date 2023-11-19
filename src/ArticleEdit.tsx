@@ -51,7 +51,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
 ---
           `);
         } else {
-          fetch("http://article.byte.art:8080/api/articles/" + this.articleId)
+          fetch("https://one.byte.art/api/articles/" + this.articleId)
           .then(res=>res.text()) 
           .then(data => {
             vditor.setValue(data);
@@ -94,7 +94,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
     let aId = this.articleId === 'new' ? '' : '/' + this.articleId
     let method = this.articleId === 'new' ? 'POST' : 'PUT'
     let editor = this;
-    fetch("http://article.byte.art:8080/api/articles" + aId, {
+    fetch("https://one.byte.art/api/articles" + aId, {
       method: method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: content })
