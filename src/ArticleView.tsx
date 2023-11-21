@@ -16,7 +16,12 @@ class ArticleView extends Component<{}, {}> {
     fetch("https://one.byte.art/api/articles/" + articleId)
     .then(res=>res.text()) 
     .then(data => {
-      Vditor.preview(this.viewDOM, data);
+      Vditor.preview(this.viewDOM, data, {
+        mode: 'dark',
+        hljs: {
+          style: "monokai"
+        }
+      });
     })
     .catch(err => console.log(err))
   }
