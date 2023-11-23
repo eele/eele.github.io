@@ -62,6 +62,17 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
       cache: {
         enable: false,
       },
+      upload: {
+        accept: 'image/*,.mp4, .wav',
+        // token: 'test',
+        url: 'https://one.byte.art/api/files',
+        // linkToImgUrl: '/api/upload/fetch',
+        // filename (name) {
+        //   return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
+        //     replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '').
+        //     replace('/\\s/g', '')
+        // },
+      },
       value: 'Waiting ...',
       minHeight: 600,
       preview: {
