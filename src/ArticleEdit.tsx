@@ -63,7 +63,8 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
         enable: false,
       },
       upload: {
-        accept: 'image/*,.mp4, .wav',
+        accept: 'audio/*,video/*,image/*',
+        max: 1024 * 1024 * 1024 * 6,
         // token: 'test',
         url: '/api/files',
         // linkToImgUrl: '/api/upload/fetch',
