@@ -51,7 +51,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
 ---
           `);
         } else {
-          fetch("https://one.byte.art/api/articles/" + this.articleId)
+          fetch("/api/articles/" + this.articleId)
           .then(res=>res.text()) 
           .then(data => {
             vditor.setValue(data);
@@ -65,7 +65,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
       upload: {
         accept: 'image/*,.mp4, .wav',
         // token: 'test',
-        url: 'https://one.byte.art/api/files',
+        url: '/api/files',
         // linkToImgUrl: '/api/upload/fetch',
         // filename (name) {
         //   return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '').
@@ -105,7 +105,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
     let aId = this.articleId === 'new' ? '' : '/' + this.articleId
     let method = this.articleId === 'new' ? 'POST' : 'PUT'
     let editor = this;
-    fetch("https://one.byte.art/api/articles" + aId, {
+    fetch("/api/articles" + aId, {
       method: method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: content })

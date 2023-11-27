@@ -10,7 +10,7 @@ class App extends Component<{}, {articles: Array<{title: String, id: String}>}> 
   }
 
   componentDidMount() {
-    fetch("https://one.byte.art/api/articles")
+    fetch("/api/articles")
     .then(res=>res.json()) 
     .then(data => {
       console.log(data)

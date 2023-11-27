@@ -18,7 +18,7 @@ class Article extends Component<{}, {}> {
     if (!window.confirm('Are you sure ?')) {
       return;
     }
-    fetch("https://one.byte.art/api/articles/" + this.articleId, {
+    fetch("/api/articles/" + this.articleId, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
