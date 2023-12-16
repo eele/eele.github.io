@@ -17,9 +17,15 @@ class ArticleView extends Component<{}, {}> {
     .then(res=>res.text()) 
     .then(data => {
       Vditor.preview(this.viewDOM, data, {
+        cdn:'/vditor',
+        emojiPath: '/vditor/dist/images/emoji',
         mode: 'dark',
         hljs: {
           style: "monokai"
+        },
+        theme: {
+          current: 'light',
+          path: '/vditor/dist/css/content-theme'
         }
       });
     })

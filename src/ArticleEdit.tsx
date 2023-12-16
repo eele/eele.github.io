@@ -59,6 +59,7 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
           .catch(err => console.log(err))
         }
       },
+      cdn:'/vditor',
       cache: {
         enable: false,
       },
@@ -77,7 +78,11 @@ tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
       value: 'Waiting ...',
       minHeight: 600,
       preview: {
-        maxWidth: 1000
+        maxWidth: 1000,
+        theme: {
+          current: 'light',
+          path: '/vditor/dist/css/content-theme'
+        }
       }
     });
 
