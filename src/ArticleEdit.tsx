@@ -47,7 +47,12 @@ class ArticleEdit extends Component<{}, {isSaved: Boolean}> {
 ---
 title: 
 date: ${now}
-tags: Codes | Robot Models | Airplane Models | Railway Models | Paper Models
+tags:
+- Codes
+- Robot Models
+- Airplane Models
+- Railway Models
+- Paper Models
 ---
           `);
         } else {
