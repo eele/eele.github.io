@@ -18,13 +18,15 @@ class Article extends Component<{}, {}> {
     if (!window.confirm('Are you sure ?')) {
       return;
     }
-    fetch("/api/articles/" + this.articleId, {
+    fetch("https://api.github.com/gists/" + this.articleId, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        "Accept": "application/vnd.github+json",
+        "Authorization": "Bearer " + localStorage.getItem('t'),
+        "X-GitHub-Api-Version": "2022-11-28",
+      }
     })
-    .then(res=>res.json()) 
-    .then(data => {
-      console.log(data);
+    .then(res=> {
       window.location.href = '/';
     })
   }

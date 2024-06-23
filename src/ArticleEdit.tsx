@@ -56,10 +56,18 @@ tags:
 ---
           `);
         } else {
-          fetch("/api/articles/" + this.articleId)
-          .then(res=>res.text()) 
+          fetch("https://api.github.com/gists/" + this.articleId, {
+            method: "GET",
+            headers: {
+              "Accept": "application/vnd.github+json",
+              "Authorization": "Bearer " + localStorage.getItem('t'),
+              "X-GitHub-Api-Version": "2022-11-28",
+            }
+          })
+          .then(res=>res.json()) 
           .then(data => {
-            vditor.setValue(data);
+            const content = data.files['README.md'].content;
+            vditor.setValue(content);
           })
           .catch(err => console.log(err))
         }
@@ -112,14 +120,25 @@ tags:
   }
 
   saveArticle = () => {
-    let content = this.vd.getValue();
-    let aId = this.articleId === 'new' ? '' : '/' + this.articleId
-    let method = this.articleId === 'new' ? 'POST' : 'PUT'
-    let editor = this;
-    fetch("/api/articles" + aId, {
+    const content = this.vd.getValue();
+    const aId = this.articleId === 'new' ? '' : '/' + this.articleId
+    const method = this.articleId === 'new' ? 'POST' : 'PATCH'
+    const editor = this;
+    fetch("https://api.github.com/gists" + aId, {
       method: method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: content })
+      headers: {
+        "Accept": "application/vnd.github+json",
+        "Authorization": "Bearer " + localStorage.getItem('t'),
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+      body: JSON.stringify({
+        "description": content.match(/title:( )*(.*)\n/)![2],
+        "files": {
+          "README.md": {
+            "content": content
+          }
+        }
+      })
     })
     .then(res=>res.json()) 
     .then(data => {

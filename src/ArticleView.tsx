@@ -13,10 +13,18 @@ class ArticleView extends Component<{}, {}> {
   
   componentDidMount() {
     let articleId = window.location.pathname.split("/")[2];
-    fetch("/api/articles/" + articleId)
-    .then(res=>res.text()) 
+    fetch("https://api.github.com/gists/" + articleId, {
+      method: "GET",
+      headers: {
+        "Accept": "application/vnd.github+json",
+        "Authorization": "Bearer " + localStorage.getItem('t'),
+        "X-GitHub-Api-Version": "2022-11-28",
+      }
+    })
+    .then(res=>res.json()) 
     .then(data => {
-      Vditor.preview(this.viewDOM, data, {
+      const content = data.files['README.md'].content;
+      Vditor.preview(this.viewDOM, content, {
         cdn:'/vditor',
         emojiPath: '/vditor/dist/images/emoji',
         mode: 'dark',
