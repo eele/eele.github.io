@@ -10,15 +10,32 @@ class App extends Component<{}, {articles: Array<{description: String, id: Strin
   }
 
   componentDidMount() {
-    fetch("https://api.github.com/gists", {
+    if (localStorage.getItem('t')) {
+      this.fetchArticle(true);
+    } else {
+      this.fetchArticle(false);
+    }
+  }
+  
+  fetchArticle(retry: boolean) {
+    fetch("https://api.github.com/users/eele/gists", {
       method: "GET",
-      headers: {
+      headers: retry ? {
         "Accept": "application/vnd.github+json",
         "Authorization": "Bearer " + localStorage.getItem('t'),
         "X-GitHub-Api-Version": "2022-11-28",
+      } : {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
       }
     })
-    .then(res=>res.json()) 
+    .then(res => {
+      if (res.status == 401 && retry) {
+        this.fetchArticle(false);
+        return false;
+      }
+      return res.json();
+    }) 
     .then(data => {
       console.log(data)
       this.setState({articles: data})
