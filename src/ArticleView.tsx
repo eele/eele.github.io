@@ -33,7 +33,7 @@ class ArticleView extends Component<{}, {}> {
       }
     })
     .then(res => {
-      if (res.status == 401 && retry) {
+      if (res.status === 401 && retry) {
         this.fetchArticle(false);
         return false;
       }

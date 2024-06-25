@@ -30,7 +30,7 @@ class App extends Component<{}, {articles: Array<{description: String, id: Strin
       }
     })
     .then(res => {
-      if (res.status == 401 && retry) {
+      if (res.status === 401 && retry) {
         this.fetchArticle(false);
         return false;
       }
