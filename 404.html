@@ -19,9 +19,10 @@
     let t = getQueryVariable('t');
     if (t) {
         localStorage.setItem('t', t);
+    } else {
+        sessionStorage.redirect = location.href;
     }
-
-    sessionStorage.redirect = location.href;
+    
     location.replace('/');
 </script>
 <body>
