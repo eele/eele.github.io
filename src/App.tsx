@@ -2,11 +2,11 @@ import './App.css';
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-class App extends Component<{}, {articles: Array<{description: String, id: String}>}> {
+class App extends Component<{}, {articles: Array<{description: String, id: String}>, isNotLogin: Boolean}> {
 
   constructor(props: {} | Readonly<{}>) {
     super(props);
-    this.state = {articles: []};
+    this.state = {articles: [], isNotLogin: false};
   }
 
   componentDidMount() {
@@ -18,6 +18,7 @@ class App extends Component<{}, {articles: Array<{description: String, id: Strin
   }
   
   fetchArticle(retry: boolean) {
+    this.setState({isNotLogin: !retry});
     fetch("https://api.github.com/users/eele/gists", {
       method: "GET",
       headers: retry ? {
@@ -50,6 +51,13 @@ class App extends Component<{}, {articles: Array<{description: String, id: Strin
         <h6 className='sub-title'>One Byte, One World.</h6>
         <br/>
         <Link to={{ pathname: `/articles/new/edit` }}>New</Link>
+        &nbsp;&nbsp;&nbsp;
+        {
+          this.state.isNotLogin ? (
+            <Link to="https://github.com/login/oauth/authorize?client_id=Ov23liq5tBJoIutYNXsq&allow_signup=true&state=1&scope=gist">Login</Link>
+          ) : null
+        }
+        
         <ul>
           {this.state.articles &&
             this.state.articles.map((item, index) => (
